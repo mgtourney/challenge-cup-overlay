@@ -1,4 +1,5 @@
 <div class="h-screen w-screen bg-grey flex flex-col text-white justify-center">
+<!-- Logos -->
     <div class="flex flex-col items-center py-4">
         <img src="/BSCC2024_Logo.png" class="h-[400px] w-[400px] justify-center opacity-65 mt-[120px]" alt="logo"/>
     </div>
@@ -12,7 +13,7 @@
         </div>
 
     <div class="flex flex-grow" />
-
+<!-- Footer -->
     <div class="flex w-full h-fit">
         <div class="flex flex-col justify-end items-center h-fit w-full">
             <p class="text-2xl font-bold py-3"><span class="font-extrabold">ARTIST</span> - SONG NAME</p>
