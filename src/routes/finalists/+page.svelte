@@ -1,5 +1,56 @@
 <script lang="ts">
+	import { PUBLIC_API_URL } from '$env/static/public';
     import TeamCard from '$lib/components/TeamCard.svelte';
+	import { onDestroy, onMount } from 'svelte';
+
+    export let data;
+
+    let teams = data.props.teams;
+    let players = data.props.players;
+
+    let winners = {
+        first: "",
+        second: "",
+        third: ""
+    };
+
+    let firstPlaceTeam;
+    let secondPlaceTeam;
+    let thirdPlaceTeam;
+
+    let firstPlacePlayers = [];
+    let secondPlacePlayers = [];
+    let thirdPlacePlayers = [];
+
+    $: firstPlaceTeam = teams.find(team => team.id === winners.first);
+    $: secondPlaceTeam = teams.find(team => team.id === winners.second);
+    $: thirdPlaceTeam = teams.find(team => team.id === winners.third);
+    
+    $: firstPlacePlayers = players.filter(player => player.team === winners.first).sort((a, b) => a.captian || b.captian ? 0 : -1);
+    $: secondPlacePlayers = players.filter(player => player.team === winners.second).sort((a, b) => a.captian || b.captian ? 0 : -1);
+    $: thirdPlacePlayers = players.filter(player => player.team === winners.third).sort((a, b) => a.captian || b.captian ? 0 : -1);
+
+    const updateWinners = () => {
+        fetch(`${PUBLIC_API_URL}/winners`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.first) winners.first = data.first;
+                if (data.second) winners.second = data.second;
+                if (data.third) winners.third = data.third;
+            });
+    }
+
+    let interval: any;
+    onMount(() => {
+        updateWinners();
+        interval = setInterval(() => {
+            updateWinners();
+        }, 1000);
+    });
+
+    onDestroy(() => {
+        clearInterval(interval);
+    });
 </script>
 
 <div class="h-screen w-screen bg-grey flex flex-col text-white">
@@ -11,9 +62,15 @@
     </div>
     <!-- Cards -->
     <div class="flex flex-row justify-center items-center gap-16">
-        {#each Array(3) as _, i}
-            <TeamCard teamNumber={i + 1}/>
-        {/each}
+        {#if firstPlaceTeam}
+            <TeamCard teamNumber={1} teamName={firstPlaceTeam.name} teamIcon={firstPlaceTeam.avatar} players={firstPlacePlayers}/>
+        {/if}
+        {#if secondPlaceTeam}
+            <TeamCard teamNumber={2} teamName={secondPlaceTeam.name} teamIcon={secondPlaceTeam.avatar} players={secondPlacePlayers}/>
+        {/if}
+        {#if thirdPlaceTeam}
+            <TeamCard teamNumber={3} teamName={thirdPlaceTeam.name} teamIcon={thirdPlaceTeam.avatar} players={thirdPlacePlayers}/>
+        {/if}
     </div>
 
     <div class="flex flex-grow" />

@@ -5,15 +5,23 @@ export default {
     extend: {
       colors: {
         purple: "#741E88",
-        red: "#B50A0F",
+        red: "#970004",
         "light-grey": "#dddddd",
-        grey:  "#6B6B6B"
+        grey:  "#6B6B6B",
+        banned: "#ff0000",
+        selected: "#d630ff",
+        picked: "#00FF08"
       },
       fontFamily: {
 				kallisto: 'kallisto'
 			}
     },
   },
+  safelist: [
+    "border-banned",
+    "border-picked",
+    "border-selected",
+  ],
   plugins: [],
 }
 
