@@ -39,7 +39,7 @@
         <div class="flex flex-col bg-purple rounded-2xl px-12 py-8 bg-opacity-80 w-[415px]">
             <div class="flex flex-row justify-center items-center text-center">
 
-                <div class="font-extrabold text-5xl text-center pb-4">MAP POOLERS</div>
+                <div class="font-extrabold text-5xl text-center pb-4">MAPPERS & POOLERS</div>
             </div>
         
             <div class="flex flex-col justify-center items-center text-center">
@@ -62,6 +62,12 @@
         
                 <div class="flex flex-row justify-center items-center text-center">
                     <div class="font-bold text-4xl py-1">RoadmanReginald</div>
+                </div>
+                <div class="flex flex-row justify-center items-center text-center">
+                    <div class="font-bold text-4xl py-1">SuperChez</div>
+                </div>
+                <div class="flex flex-row justify-center items-center text-center">
+                    <div class="font-bold text-4xl py-1">cadavren</div>
                 </div>
 
                 <div class="flex flex-row justify-center items-center text-center">
