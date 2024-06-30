@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="h-screen w-screen bg-grey flex flex-col text-white">
+<div class="h-screen w-screen flex flex-col text-white">
     <!-- Logo -->
     <div class="flex flex-col items-center px-4 py-10">
         <img src="/BSCC2024_Logo.png" class="h-[200px] w-[200px] justify-center" alt="logo"/>
